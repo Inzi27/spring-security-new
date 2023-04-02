@@ -1,25 +1,27 @@
 package io.inzi.springsecuritynew.model;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "users")
+
+@Document(collection = "users")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String id;
     private String userName;
     private String password;
     private String roles;
     private boolean active;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

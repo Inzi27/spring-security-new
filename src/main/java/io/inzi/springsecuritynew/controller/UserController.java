@@ -4,6 +4,7 @@ import io.inzi.springsecuritynew.UserRepository;
 import io.inzi.springsecuritynew.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,6 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
+    @Transactional
     public String addUser(@RequestBody UserEntity user){
         userRepository.save(user);
         return "User added";
